@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Contacts_List.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Contacts_List
 {
@@ -15,6 +16,7 @@ namespace Contacts_List
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddTransient<MainPage>(); // Register MainPage as a transient service
+            builder.Services.AddSingleton<IDatabaseService, DatabaseService>(); // Register IDatabaseService with its implementation DatabaseService
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
